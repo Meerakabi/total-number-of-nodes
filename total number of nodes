@@ -1,0 +1,24 @@
+from collections import deque
+
+def count_nodes_bfs(root):
+    if root is None:
+        return 0
+    
+    count = 0
+    queue = deque([root])
+    
+    while queue:
+        node = queue.popleft()
+        count += 1
+        
+        # Add children to the queue
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    
+    return count
+
+# Example usage:
+node_count = count_nodes_bfs(root)
+print("Total number of nodes:", node_count)
